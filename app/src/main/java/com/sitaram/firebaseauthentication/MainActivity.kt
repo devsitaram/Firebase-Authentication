@@ -16,7 +16,9 @@ import com.sitaram.firebaseauthentication.features.login.LoginViewScreen
 import com.sitaram.firebaseauthentication.features.main.MainViewScreen
 import com.sitaram.firebaseauthentication.features.register.SignUpViewScreen
 import com.sitaram.firebaseauthentication.ui.theme.FirebaseAuthenticationTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
