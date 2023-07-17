@@ -6,11 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sitaram.firebaseauthentication.features.login.LoginViewScreen
+import com.sitaram.firebaseauthentication.features.main.MainViewScreen
+import com.sitaram.firebaseauthentication.features.register.SignUpViewScreen
 import com.sitaram.firebaseauthentication.ui.theme.FirebaseAuthenticationTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,9 +29,28 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberCompositionContext()
+                    val navController = rememberNavController()
+                    Navigation(navController = navController)
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun Navigation(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = "Login") {
+
+        composable("Login") {
+            LoginViewScreen()
+        }
+
+        composable("SignUp") {
+            SignUpViewScreen()
+        }
+
+        composable("Main") {
+            MainViewScreen()
         }
     }
 }
