@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851018808241",
+    "project_id": "fir-authentication-781df",
+    "storage_bucket": "fir-authentication-781df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851018808241:android:b79b0f64cb0b553da0db90",
+        "android_client_info": {
+          "package_name": "com.sitaram.firebaseauthentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851018808241-fh7k9m0i8jls6vp6c9ithshau17uv3t7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6OzMnA-Suzl4MJQf3pHgSZi0PwWuCK4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851018808241-fh7k9m0i8jls6vp6c9ithshau17uv3t7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

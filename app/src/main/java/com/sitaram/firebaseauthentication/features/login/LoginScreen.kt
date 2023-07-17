@@ -18,17 +18,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.sitaram.firebaseauthentication.R
 import com.sitaram.firebaseauthentication.features.util.ButtonComponent
 import com.sitaram.firebaseauthentication.features.util.NavigationTextComponent
 import com.sitaram.firebaseauthentication.features.util.TextComponent
 import com.sitaram.firebaseauthentication.features.util.TextFieldComponent
 
-@Preview
 @Composable
-fun LoginViewScreen() {
+fun LoginViewScreen(navController: NavHostController) {
 
     var username by remember {
         mutableStateOf("")
@@ -40,6 +39,15 @@ fun LoginViewScreen() {
 
     val onLoginClick: () -> Unit = {
 
+        val registerSuccess = true
+
+        if (registerSuccess){
+            navController.navigate("Main"){
+                popUpTo("Login"){
+                    inclusive = true
+                }
+            }
+        }
     }
 
     Surface(Modifier.fillMaxSize()) {
@@ -75,7 +83,7 @@ fun LoginViewScreen() {
             // divider
             Divider(Modifier.padding(top = 30.dp, start = 25.dp, end = 25.dp).fillMaxWidth().height(3.dp).background(Color.White))
 
-            NavigationTextComponent(text = "Register your account?", color = Color.DarkGray)
+            NavigationTextComponent("Register your account?", navController, "Register")
         }
     }
 }

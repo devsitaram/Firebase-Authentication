@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
@@ -13,12 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
 fun TextComponent(text: String, color: Color) {
@@ -38,19 +41,21 @@ fun TextComponent(text: String, color: Color) {
 }
 
 @Composable
-fun NavigationTextComponent(text: String, color: Color) {
-    Text(
-        text = text,
+fun NavigationTextComponent(value: String, navController: NavController, route: String) {
+
+    ClickableText(
+        text = AnnotatedString(value),
         modifier = Modifier
             .wrapContentHeight()
-            .padding(top = 5.dp),  // Specify the desired padding value
+            .padding(horizontal = 5.dp),
         style = TextStyle(
-            fontSize = 20.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             fontStyle = FontStyle.Normal
         ),
-        textAlign = TextAlign.Center,
-        color = color
+        onClick = {
+            navController.navigate(route)
+        }
     )
 }
 

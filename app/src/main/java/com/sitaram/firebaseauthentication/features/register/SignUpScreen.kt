@@ -18,19 +18,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.sitaram.firebaseauthentication.R
 import com.sitaram.firebaseauthentication.features.util.ButtonComponent
 import com.sitaram.firebaseauthentication.features.util.NavigationTextComponent
 import com.sitaram.firebaseauthentication.features.util.TextComponent
 import com.sitaram.firebaseauthentication.features.util.TextFieldComponent
 
-@Preview
 @Composable
-fun SignUpViewScreen() {
+fun SignUpViewScreen(navController: NavHostController) {
 
-    var username by remember {
+    var email by remember {
+        mutableStateOf("")
+    }
+    var name by remember {
         mutableStateOf("")
     }
 
@@ -40,6 +42,11 @@ fun SignUpViewScreen() {
 
     val onLoginClick: () -> Unit = {
 
+        val registerSuccess = true
+
+        if (registerSuccess){
+            navController.navigate("Login")
+        }
     }
 
     Surface(Modifier.fillMaxSize()) {
@@ -54,16 +61,16 @@ fun SignUpViewScreen() {
 
             Column {
                 TextFieldComponent(
-                    password,
-                    onValueChange = { password = it },
+                    email,
+                    onValueChange = { email = it },
                     painter = painterResource(id = R.drawable.ic_email),
                     text = "Email",
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
                 TextFieldComponent(
-                    username,
-                    onValueChange = { username = it },
+                    name,
+                    onValueChange = { name = it },
                     painter = painterResource(id = R.drawable.ic_person),
                     text = "Username",
                 )
@@ -81,9 +88,15 @@ fun SignUpViewScreen() {
                 ButtonComponent(onClick = onLoginClick, btnText = "Sign Up")
             }
             // divider
-            Divider(Modifier.padding(top = 30.dp, start = 25.dp, end = 25.dp).fillMaxWidth().height(3.dp).background(Color.White))
+            Divider(
+                Modifier
+                    .padding(top = 30.dp, start = 25.dp, end = 25.dp)
+                    .fillMaxWidth()
+                    .height(3.dp)
+                    .background(Color.White)
+            )
 
-            NavigationTextComponent(text = "Login your account?", color = Color.DarkGray)
+            NavigationTextComponent("Login your account?", navController, "Login")
         }
     }
 }

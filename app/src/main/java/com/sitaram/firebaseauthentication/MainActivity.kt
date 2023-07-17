@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionContext
-import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -42,11 +40,11 @@ fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "Login") {
 
         composable("Login") {
-            LoginViewScreen()
+            LoginViewScreen(navController)
         }
 
-        composable("SignUp") {
-            SignUpViewScreen()
+        composable("Register") {
+            SignUpViewScreen(navController)
         }
 
         composable("Main") {
